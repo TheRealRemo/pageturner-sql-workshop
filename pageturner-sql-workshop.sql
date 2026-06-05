@@ -33,4 +33,27 @@ FROM books;
 -- Question 9
 SELECT ROUND(avg(price), 2)
 FROM books;
+-- Question 10
+SELECT max(price) , min(price) 
+FROM books;
+-- Question 11
+SELECT genres.name, count(b.genre_ID) AS GenreCount
+FROM books b
+JOIN genres ON b.genre_id = genres.genre_ID
+GROUP BY b.genre_ID;
+-- Question 12
+SELECT genres.name, SUM(stock_quantity)
+FROM books b
+JOIN genres ON b.genre_id = genres.genre_ID
+GROUP BY b.genre_id;
+-- Question 13
+SELECT b.genre_id, genres.name, count(b.genre_ID) AS GenreCount
+FROM books b
+JOIN genres ON b.genre_id = genres.genre_ID
+GROUP BY b.genre_id
+HAVING COUNT(b.genre_id) > 3;
+-- Question 14
+SELECT orders.status, COUNT(orders.status) AS StatusCount
+FROM orders
+GROUP BY orders.status;
 
