@@ -76,6 +76,11 @@ JOIN books ON order_items.book_id = books.book_id;
 SELECT CONCAT(authors.first_name, " ", authors.last_name) AS full_name, count(books.title) AS books_written
 FROM authors
 LEFT JOIN books ON authors.author_id = books.author_id
-GROUP BY full_name;
-
-
+GROUP BY full_name
+ORDER BY books_written DESC;
+-- Question 20
+SELECT CONCAT(customers.first_name, " ", customers.last_name) AS full_name, count(orders.customer_id) AS total_orders
+FROM customers
+LEFT JOIN orders ON customers.customer_id = orders.customer_id
+GROUP BY full_name
+ORDER BY total_orders DESC;
